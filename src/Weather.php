@@ -7,7 +7,7 @@ class Weather
 {
 
 	protected $gaoDeKey;//高德地图的key,列如：3c4f5741a79827018790af984084a81d
-	 protected $guzzleOptions = []; 
+	protected $guzzleOptions = []; 
   
     public function __construct($key)
     {
@@ -26,10 +26,10 @@ class Weather
 
     public function getWeather($city, $type = 'base', $format = 'json')
     {
-        $url = "https://restapi.amap.com/v3/weather/weath";
+        $url = "https://restapi.amap.com/v3/weather/weatherInfo";
 
         $query = array_filter([
-            'key' => $this->key,
+            'key' => $this->gaoDeKey,
             'city' => $city,
             'output' => $format,
             'extensions' =>  $type,
@@ -37,7 +37,7 @@ class Weather
 
         $response = $this->getHttpClient()->get($url, [
             'query' => $query,
-        ])->getBody()->getContents()
+        ])->getBody()->getContents();
 
         return $format === 'json' ? json_decode($response) : $response;
 

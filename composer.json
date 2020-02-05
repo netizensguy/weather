@@ -1,4 +1,7 @@
 {
+    "name": "netizensguy/weather",
+    "description": "A weather SDK.",
+    "license": "MIT", 
     "autoload": {
         "psr-4": {
             "Netizensguy\\Weather\\": "src"
